@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Victor Smart — Portfolio</title>
+  <title>V.innovations — Portfolio</title>
+  <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://i.ibb.co" />
 </head>
 <body>
   <div class="noise"></div>
@@ -15,26 +17,57 @@
   <header class="topbar">
     <div class="brand">
       <span class="logo-dot"></span>
-      <span class="brand-text">Victor Smart</span>
+      <span class="brand-text">V.innovations</span>
     </div>
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#services">Services</a>
+      <a href="#why">Why Choose Us</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
     <a class="cta" href="#contact">Reach Out</a>
   </header>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand-text">V.innovations</span>
+        <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="primary" href="#contact">Reach Out</a>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
       <div class="hero-content">
-        <p class="eyebrow">Creative Technologist • Software Engineer • Freelancer</p>
-        <h1>
-          Victor Ngozi<br />
-          Victor Innovations
-        </h1>
+          <div class="hero-inline">
+            <div class="portrait">
+            <img src="https://i.ibb.co/wZNnz9pb/20260125-204502.jpg" alt="Victor portrait" loading="eager" fetchpriority="high" width="190" height="190" />
+            </div>
+            <div>
+              <p class="eyebrow">Creative Technologist • Software Engineer • Freelancer</p>
+              <h1>
+              Hi, I’m Victor
+              </h1>
+            </div>
+          </div>
+        <p class="sub">
+          5+ years of experience delivering reliable digital solutions, creative media, and web products for
+          clients who need results they can trust.
+        </p>
         <p class="sub">
           I shape ideas into striking visuals and functional products—blending creative media with software
           development. Expect bold aesthetics, clean code, and experiences that feel modern and alive.
@@ -63,20 +96,19 @@
       </div>
 
       <div class="hero-visual" id="hero-visual">
-        <div class="portrait">
-          <img src="https://i.ibb.co/wZNnz9pb/20260125-204502.jpg" alt="Victor Ngozi portrait" />
-        </div>
         <div class="orb orb-a"></div>
         <div class="orb orb-b"></div>
         <div class="orb orb-c"></div>
 
-        <div class="cube">
-          <div class="face front">3D</div>
-          <div class="face back">EDIT</div>
-          <div class="face right">WEB</div>
-          <div class="face left">APP</div>
-          <div class="face top">UX</div>
-          <div class="face bottom">2D</div>
+        <div class="cube-wrap">
+          <div class="cube">
+            <div class="face front">3D</div>
+            <div class="face back">EDIT</div>
+            <div class="face right">WEB</div>
+            <div class="face left">APP</div>
+            <div class="face top">UX</div>
+            <div class="face bottom">2D</div>
+          </div>
         </div>
 
         <div class="logo-stack">
@@ -185,8 +217,6 @@
           <span class="pill">Swift</span>
       </div>
       <div class="tools">
-        <div class="tool-card">VS Code</div>
-        <div class="tool-card">Git & GitHub</div>
         <div class="tool-card">HTML, CSS, JavaScript</div>
         <div class="tool-card">PHP</div>
         <div class="tool-card">Python</div>
@@ -206,20 +236,7 @@
       </div>
       <div class="project-grid">
         <article class="project-card">
-          <div class="project-thumb">
-            <svg viewBox="0 0 320 180" aria-hidden="true">
-              <defs>
-                <linearGradient id="p1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#7c3aed" />
-                  <stop offset="1" stop-color="#22d3ee" />
-                </linearGradient>
-              </defs>
-              <rect width="320" height="180" rx="22" fill="#0b1224" />
-              <rect x="24" y="24" width="160" height="100" rx="16" fill="url(#p1)" opacity="0.9" />
-              <circle cx="248" cy="72" r="34" fill="#22d3ee" opacity="0.5" />
-              <path d="M40 140 L120 96 L200 140" stroke="#c7d2fe" stroke-width="6" fill="none" />
-            </svg>
-          </div>
+          <div class="project-thumb icon-thumb">🚀</div>
           <div class="project-meta">
             <span class="project-icon">🚀</span>
             <span>Web Platform</span>
@@ -229,21 +246,7 @@
           <a class="tag" href="https://thirdeye-web-version.netlify.app/" target="_blank" rel="noreferrer">View Project</a>
         </article>
         <article class="project-card">
-          <div class="project-thumb alt">
-            <svg viewBox="0 0 320 180" aria-hidden="true">
-              <defs>
-                <linearGradient id="p2" x1="0" x2="1">
-                  <stop offset="0" stop-color="#22d3ee" />
-                  <stop offset="1" stop-color="#0ea5e9" />
-                </linearGradient>
-              </defs>
-              <rect width="320" height="180" rx="22" fill="#0a1222" />
-              <rect x="30" y="32" width="120" height="116" rx="18" fill="url(#p2)" opacity="0.85" />
-              <rect x="170" y="46" width="120" height="20" rx="10" fill="#1e293b" />
-              <rect x="170" y="78" width="90" height="20" rx="10" fill="#1e293b" />
-              <rect x="170" y="110" width="110" height="20" rx="10" fill="#1e293b" />
-            </svg>
-          </div>
+          <div class="project-thumb icon-thumb">🎨</div>
           <div class="project-meta">
             <span class="project-icon">🎨</span>
             <span>Creative</span>
@@ -253,20 +256,7 @@
           <a class="tag" href="https://wa.me/2348061745257" target="_blank" rel="noreferrer">On Request</a>
         </article>
         <article class="project-card">
-          <div class="project-thumb alt-2">
-            <svg viewBox="0 0 320 180" aria-hidden="true">
-              <defs>
-                <linearGradient id="p3" x1="0" x2="1">
-                  <stop offset="0" stop-color="#f97316" />
-                  <stop offset="1" stop-color="#7c3aed" />
-                </linearGradient>
-              </defs>
-              <rect width="320" height="180" rx="22" fill="#0b1224" />
-              <path d="M40 120 C90 70, 140 70, 200 120" stroke="url(#p3)" stroke-width="10" fill="none" />
-              <circle cx="240" cy="76" r="28" fill="#7c3aed" opacity="0.6" />
-              <rect x="40" y="132" width="240" height="12" rx="6" fill="#1e293b" />
-            </svg>
-          </div>
+          <div class="project-thumb icon-thumb">📦</div>
           <div class="project-meta">
             <span class="project-icon">📦</span>
             <span>Tracking Simulation</span>
@@ -276,20 +266,7 @@
           <a class="tag" href="https://cargo-delivery-express.netlify.app/" target="_blank" rel="noreferrer">View Project</a>
         </article>
         <article class="project-card">
-          <div class="project-thumb alt-3">
-            <svg viewBox="0 0 320 180" aria-hidden="true">
-              <defs>
-                <linearGradient id="p4" x1="0" x2="1">
-                  <stop offset="0" stop-color="#0ea5e9" />
-                  <stop offset="1" stop-color="#22d3ee" />
-                </linearGradient>
-              </defs>
-              <rect width="320" height="180" rx="22" fill="#0b1224" />
-              <rect x="40" y="30" width="240" height="120" rx="20" fill="url(#p4)" opacity="0.25" />
-              <path d="M160 58 L160 118" stroke="#e2e8f0" stroke-width="10" stroke-linecap="round" />
-              <path d="M130 98 L160 128 L190 98" stroke="#e2e8f0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
+          <div class="project-thumb icon-thumb">⬇️</div>
           <div class="project-meta">
             <span class="project-icon">⬇️</span>
             <span>Downloader</span>
@@ -391,31 +368,31 @@
         <p>Connect with me on any platform below.</p>
         <div class="social-grid">
           <a class="social-link" href="https://www.instagram.com/smarter.v082?igsh=MWFkdnU2OWZ2ZHQzMA==" target="_blank" rel="noreferrer">
-            <span class="social-icon">📸</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/instagram/0ea5e9" alt="Instagram" />
             <span>Instagram</span>
           </a>
           <a class="social-link" href="https://www.tiktok.com/@smarterv01?_r=1&_t=ZS-93NKaqoREro" target="_blank" rel="noreferrer">
-            <span class="social-icon">🎵</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/tiktok/0ea5e9" alt="TikTok" />
             <span>TikTok</span>
           </a>
           <a class="social-link" href="https://www.facebook.com/share/1HMGpgbrWE/" target="_blank" rel="noreferrer">
-            <span class="social-icon">📘</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/facebook/0ea5e9" alt="Facebook" />
             <span>Facebook</span>
           </a>
           <a class="social-link" href="https://youtube.com/@smarterv01?si=GRvWuMffq0guRL8S" target="_blank" rel="noreferrer">
-            <span class="social-icon">▶️</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/youtube/0ea5e9" alt="YouTube" />
             <span>YouTube</span>
           </a>
           <a class="social-link" href="https://www.threads.com/@smarter.v082" target="_blank" rel="noreferrer">
-            <span class="social-icon">🧵</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/threads/0ea5e9" alt="Threads" />
             <span>Threads</span>
           </a>
           <a class="social-link" href="https://wa.me/2348061745257" target="_blank" rel="noreferrer">
-            <span class="social-icon">💬</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/whatsapp/0ea5e9" alt="WhatsApp" />
             <span>WhatsApp</span>
           </a>
           <a class="social-link" href="mailto:victorngozi111@gmail.com">
-            <span class="social-icon">✉️</span>
+            <img class="social-icon" src="https://cdn.simpleicons.org/gmail/0ea5e9" alt="Email" />
             <span>Email</span>
           </a>
         </div>
@@ -424,12 +401,12 @@
   </main>
 
   <footer class="footer">
-    <span>© 2026 Victor Ngozi.</span>
+    <span>© 2026 Victor Innovations.</span>
     <div class="footer-links">
       <a href="#contact">Contact</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
