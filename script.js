@@ -1,9 +1,5 @@
 const heroVisual = document.getElementById("hero-visual");
 const cube = document.querySelector(".cube");
-const menuBtn = document.getElementById("menu-btn");
-const menuClose = document.getElementById("menu-close");
-const drawer = document.getElementById("drawer");
-const drawerLinks = document.querySelectorAll(".drawer-nav a");
 const counters = document.querySelectorAll(".stat-num[data-count]");
 const revealItems = document.querySelectorAll(
   ".section, .about-card, .project-card, .service-card, .tool-card, .logo-card, .stat"
@@ -23,28 +19,6 @@ if (heroVisual && cube) {
   });
 }
 
-if (menuBtn && menuClose && drawer) {
-  const openDrawer = () => {
-    drawer.classList.add("open");
-    menuBtn.setAttribute("aria-expanded", "true");
-    drawer.setAttribute("aria-hidden", "false");
-  };
-
-  const closeDrawer = () => {
-    drawer.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", "false");
-    drawer.setAttribute("aria-hidden", "true");
-  };
-
-  menuBtn.addEventListener("click", openDrawer);
-  menuClose.addEventListener("click", closeDrawer);
-  drawer.addEventListener("click", (event) => {
-    if (event.target === drawer) {
-      closeDrawer();
-    }
-  });
-  drawerLinks.forEach((link) => link.addEventListener("click", closeDrawer));
-}
 
 const animateCounter = (el) => {
   const target = Number(el.dataset.count || "0");
