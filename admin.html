@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>V Ventures — Admin Chat Panel</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">V²</div>
+      <h2>Admin Panel</h2>
+      <p class="login-sub">V Ventures Tech Solutions</p>
+      <div class="login-form">
+        <input
+          type="password"
+          id="admin-pass"
+          placeholder="Enter admin password"
+          autocomplete="current-password"
+        />
+        <button id="login-btn">Login →</button>
+      </div>
+      <p id="login-error" class="login-error hidden">Wrong password. Try again.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN APP -->
+  <div id="admin-app" class="hidden">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="admin-logo">V²</div>
+        <div>
+          <strong>Admin Panel</strong>
+          <span>V Ventures</span>
+        </div>
+        <button id="logout-btn" title="Logout">↩</button>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="chats">💬 Chats <span class="chat-count" id="chat-count">0</span></button>
+        <button class="tab-btn" data-tab="leads">📋 Leads <span class="leads-count" id="leads-count">0</span></button>
+      </div>
+
+      <div id="chat-list" class="chat-list tab-panel" data-panel="chats">
+        <p class="empty-list">No chats yet.</p>
+      </div>
+      <div id="leads-list" class="chat-list tab-panel hidden" data-panel="leads">
+        <p class="empty-list">No contact submissions yet.</p>
+      </div>
+    </aside>
+
+    <main class="conv-panel">
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">💬</div>
+        <h3>Select a Conversation</h3>
+        <p>Choose a chat from the left to start replying.</p>
+      </div>
+
+      <div id="conversation" class="conversation hidden">
+        <div class="conv-header" id="conv-header">
+          <div class="conv-avatar" id="conv-avatar">?</div>
+          <div>
+            <strong id="conv-name">Visitor</strong>
+            <span id="conv-page" class="conv-page"></span>
+          </div>
+          <div class="conv-header-actions">
+            <button id="delete-chat-btn" class="delete-chat-btn" title="Delete entire chat">🗑 Delete</button>
+            <button id="back-btn" class="back-btn" title="Back to list">← Back</button>
+          </div>
+        </div>
+
+        <div id="conv-messages" class="conv-messages"></div>
+
+        <div class="conv-input-wrap">
+          <input type="text" id="admin-input" placeholder="Type a reply…" maxlength="500" autocomplete="off" />
+          <button id="admin-send">Send</button>
+        </div>
+      </div>
+
+      <div id="lead-detail" class="lead-detail hidden">
+        <div class="conv-header">
+          <div class="conv-avatar ld-avatar" id="ld-avatar">?</div>
+          <div>
+            <strong id="ld-name">Lead</strong>
+            <span class="conv-page" id="ld-service"></span>
+          </div>
+          <div class="conv-header-actions">
+            <button id="delete-lead-btn" class="delete-chat-btn">🗑 Delete</button>
+            <button id="back-lead-btn" class="back-btn">← Back</button>
+          </div>
+        </div>
+        <div class="lead-body">
+          <div class="lead-field"><span class="lf-label">Phone / WhatsApp</span><a id="ld-phone" class="lf-val lf-link" href="#" target="_blank"></a></div>
+          <div class="lead-field"><span class="lf-label">Service</span><span id="ld-service-val" class="lf-val lf-badge"></span></div>
+          <div class="lead-field"><span class="lf-label">Submitted</span><span id="ld-time" class="lf-val"></span></div>
+          <div class="lead-field lead-msg"><span class="lf-label">Message</span><p id="ld-message" class="lf-val lf-msg"></p></div>
+          <div class="lead-actions">
+            <a id="ld-wa-btn" class="lead-action-btn la-wa" href="#" target="_blank" rel="noreferrer">WhatsApp Reply →</a>
+            <select id="ld-status-sel" class="lead-status-sel">
+              <option value="new">New</option>
+              <option value="read">Read</option>
+              <option value="replied">Replied</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

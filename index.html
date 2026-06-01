@@ -1,385 +1,754 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>V.innovations — Portfolio</title>
+  <title>V Ventures Tech Solutions — Web, App & Graphic Design</title>
+  <meta name="description" content="V Ventures Tech Solutions builds fast websites, powerful apps, and bold graphic design. A team that delivers results you can trust — from Delta State, Nigeria." />
   <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://i.ibb.co" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="bg-grid"></div>
-  <header class="topbar">
-    <div class="brand">
-      <span class="logo-dot"></span>
-      <span class="brand-text">V.innovations</span>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="pre-inner">
+      <div class="pre-logo">
+        <img src="my logo.png" alt="" />
+        <span class="pre-ring"></span>
+      </div>
+      <div class="pre-bar-track"><span class="pre-bar" id="pre-bar"></span></div>
+      <p class="pre-text">V VENTURES</p>
     </div>
+  </div>
+
+  <div class="proj-loading" id="proj-loading" aria-hidden="true">
+    <div class="pl-content">
+      <div class="pl-logo-box">
+        <img src="my logo.png" alt="V Ventures" class="pl-logo-img" />
+        <div class="pl-logo-ring"></div>
+      </div>
+      <p class="pl-label" id="pl-label">Loading Project</p>
+      <div class="pl-bar-track"><div class="pl-bar" id="pl-bar"></div></div>
+      <p class="pl-status" id="pl-status">Initializing</p>
+    </div>
+  </div>
+
+  <div class="proj-modal" id="proj-modal" role="dialog" aria-modal="true" aria-label="Project preview">
+    <div class="pm-backdrop" id="pm-backdrop"></div>
+    <div class="pm-box">
+      <button class="pm-close" id="pm-close" aria-label="Close preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="pm-browser">
+        <div class="pm-topbar">
+          <div class="pm-dots"><span class="pmd1"></span><span class="pmd2"></span><span class="pmd3"></span></div>
+          <div class="pm-url-bar" id="pm-url-bar">vventures.app</div>
+          <span class="pm-refresh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          </span>
+        </div>
+        <div class="pm-screen" id="pm-screen"></div>
+      </div>
+      <div class="pm-details">
+        <div class="pm-meta">
+          <span class="pm-proj-tag" id="pm-proj-tag"></span>
+          <h3 id="pm-proj-title"></h3>
+          <p id="pm-proj-desc"></p>
+        </div>
+        <div class="pm-actions">
+          <a class="btn-primary pm-visit-btn" id="pm-visit-btn" href="#" target="_blank" rel="noreferrer">Visit Live Site</a>
+          <button class="btn-ghost" id="pm-close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="close-menu" id="close-menu" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="mobile-logo-wrap"><img src="my logo.png" alt="V Ventures" class="mobile-logo-img" /></div>
+    <nav class="mobile-nav">
+      <a href="#services" class="mnav-link">Services</a>
+      <a href="#why" class="mnav-link">Why Us</a>
+      <a href="#work" class="mnav-link">Work</a>
+      <a href="#about" class="mnav-link">About</a>
+      <a href="#faq" class="mnav-link">FAQ</a>
+      <a href="#contact" class="mnav-link">Contact</a>
+      <a class="mnav-cta" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Start a Project</a>
+    </nav>
+  </div>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#top">
+      <div class="logo-img-wrap"><img src="my logo.png" alt="V Ventures" class="logo-img" /></div>
+      <div class="brand-names">
+        <span class="brand-main">V Ventures</span>
+        <span class="brand-sub">Tech Solutions</span>
+      </div>
+    </a>
     <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
       <a href="#services">Services</a>
-      <a href="#why">Why Choose Us</a>
+      <a href="#why">Why Us</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="cta" href="#contact">Reach Out</a>
+    <div class="topbar-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a class="cta" href="#contact">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="main">
+    <span id="top"></span>
+
+    <section class="hero" id="hero">
       <div class="hero-content">
-        <div class="hero-inline">
-          <div class="portrait">
-            <img src="https://i.ibb.co/wZNnz9pb/20260125-204502.jpg" alt="Victor portrait" loading="eager" fetchpriority="high" width="190" height="190" />
-          </div>
-          <div>
-            <p class="eyebrow">Creative Technologist • Software Engineer • Freelancer</p>
-            <h1>Hi, I’m Victor</h1>
-          </div>
-        </div>
-        <p class="sub">
-          4 years of experience delivering reliable digital solutions, creative media, and web products for
-          clients who need results they can trust.
-        </p>
-        <p class="sub">
-          I shape ideas into striking visuals and functional products—blending creative media with software
-          development. Expect bold aesthetics, clean code, and experiences that feel modern and alive.
-        </p>
+        <p class="eyebrow"><span class="eyebrow-dot"></span>Web Dev · App Dev · Design</p>
+        <h1 class="hero-title" data-split>We Build Fast.<br /><span class="grad">We Deliver Results.</span></h1>
+        <p class="sub">V Ventures Tech Solutions builds websites and apps that actually work. We move as one team, ship fast, and hand you the absolute best — every single time.</p>
         <div class="hero-actions">
-          <a class="primary" href="#contact">Reach out via WhatsApp</a>
-          <a class="ghost" href="#projects">View projects</a>
+          <a class="btn-primary magnetic" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Start Your Project</a>
+          <a class="btn-ghost magnetic" href="#work">View Our Work</a>
         </div>
         <div class="stats">
-          <div class="stat">
-            <span class="stat-num" data-count="12">0</span>
-            <span class="stat-label">Skill Domains</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num" data-count="80">0</span>
-            <span class="stat-label">Creative Deliverables</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num" data-count="100">0</span>
-            <span class="stat-label">Client Focus</span>
-          </div>
+          <div class="stat"><span class="stat-num" data-count="50" data-suffix="+">0</span><span class="stat-label">Projects Done</span></div>
+          <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">Client Satisfaction</span></div>
+          <div class="stat"><span class="stat-num" data-count="4" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
         </div>
       </div>
 
       <div class="hero-visual" id="hero-visual">
-        <div class="orb orb-a"></div>
-        <div class="orb orb-b"></div>
-        <div class="orb orb-c"></div>
-
-        <div class="cube-wrap">
-          <div class="cube">
-            <div class="face front">3D</div>
-            <div class="face back">EDIT</div>
-            <div class="face right">WEB</div>
-            <div class="face left">APP</div>
-            <div class="face top">UX</div>
-            <div class="face bottom">2D</div>
+        <div class="portrait" id="portrait">
+          <div class="portrait-layer p-glow" data-depth="0.10"></div>
+          <div class="portrait-frame" data-depth="0.20">
+            <div class="portrait-ring"></div>
+            <img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="portrait-img" />
+            <div class="portrait-scan"></div>
           </div>
-        </div>
-
-        <div class="logo-stack">
-          <div class="logo-card">
-            <svg viewBox="0 0 120 120" aria-hidden="true">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stop-color="#7c3aed" />
-                  <stop offset="1" stop-color="#22d3ee" />
-                </linearGradient>
-              </defs>
-              <circle cx="60" cy="60" r="42" fill="url(#g1)" />
-              <path d="M35 70 L60 30 L85 70 Z" fill="#0f172a" />
-            </svg>
-            <span>Vision</span>
+          <div class="chip chip-a" data-depth="0.55">
+            <span class="chip-dot ok"></span> Available for Projects
           </div>
-          <div class="logo-card">
-            <svg viewBox="0 0 120 120" aria-hidden="true">
-              <rect x="20" y="20" width="80" height="80" rx="18" fill="#22d3ee" />
-              <rect x="38" y="38" width="44" height="44" rx="10" fill="#0f172a" />
-            </svg>
-            <span>Pixel</span>
+          <div class="chip chip-b" data-depth="0.45">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Fast Delivery
           </div>
-          <div class="logo-card">
-            <svg viewBox="0 0 120 120" aria-hidden="true">
-              <path d="M60 18 L100 60 L60 102 L20 60 Z" fill="#60a5fa" />
-              <circle cx="60" cy="60" r="20" fill="#0f172a" />
-            </svg>
-            <span>Motion</span>
+          <div class="chip chip-c" data-depth="0.50">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3z"/></svg>
+            Trusted Results
           </div>
         </div>
       </div>
+
+      <a class="scroll-cue" href="#services" aria-label="Scroll down">
+        <span class="scroll-cue-line"></span>
+      </a>
     </section>
 
-    <section id="about" class="section about">
-      <div class="section-head">
-        <h2>Profile</h2>
-        <p>Freelancer and tech creator focused on bold, high-quality digital outcomes.</p>
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Fast Delivery</span><i>✦</i><span>We Work As A Team</span><i>✦</i>
+        <span>Results You Can Trust</span><i>✦</i><span>Website Development</span><i>✦</i>
+        <span>App Development</span><i>✦</i><span>Graphic Design</span><i>✦</i>
+        <span>Fast Delivery</span><i>✦</i><span>We Work As A Team</span><i>✦</i>
+        <span>Results You Can Trust</span><i>✦</i><span>Website Development</span><i>✦</i>
+        <span>App Development</span><i>✦</i><span>Graphic Design</span><i>✦</i>
       </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>Creative Profile</h3>
-          <p>
-            Creative technologist specializing in visual storytelling and software development. Skilled in
-            video editing, graphic design, web and app development, API integration, and software engineering.
-          </p>
+    </div>
+
+    <section id="services" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">What We Do</p>
+          <h2>Our Services</h2>
         </div>
-        <div class="about-card">
-          <h3>Creative + Tech Focus</h3>
-          <ul>
-            <li>Freelance video and photo editing</li>
-            <li>Graphic design for brands and creators</li>
-            <li>Website and web app development</li>
-            <li>Mobile and desktop app simulations</li>
-            <li>API connections and integrations</li>
-            <li>Online freelance work with clients</li>
+        <p class="section-desc">Clear services. Real delivery. No fluff.</p>
+      </div>
+      <div class="service-grid">
+
+        <article class="service-card svc-blue reveal" data-tilt>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+          </div>
+          <h3>Website Development</h3>
+          <p>Clean, fast, responsive websites tailored to your business — from landing pages to full web platforms.</p>
+          <ul class="svc-list">
+            <li>Custom landing pages</li>
+            <li>Business &amp; portfolio sites</li>
+            <li>E-commerce stores</li>
+            <li>Web dashboards</li>
           </ul>
-        </div>
-        <div class="about-card">
-          <h3>Hobbies & Interests</h3>
-          <ul>
-            <li>Christian faith</li>
-            <li>Reading</li>
-            <li>Building things</li>
-            <li>Making people happy</li>
-            <li>Being creative</li>
+          <div class="svc-tags">
+            <span>React</span><span>Next.js</span><span>Tailwind</span><span>WordPress</span><span>SEO</span>
+          </div>
+          <a class="svc-cta" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Get a Website
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card svc-green reveal" data-tilt>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2.5"/><path d="M11 18h2"/></svg>
+          </div>
+          <h3>App Development</h3>
+          <p>From concept to launch, we build web and mobile apps that are fast, reliable, and made for real users.</p>
+          <ul class="svc-list">
+            <li>Web applications</li>
+            <li>Mobile app development</li>
+            <li>API integrations</li>
+            <li>MVPs &amp; prototypes</li>
           </ul>
+          <div class="svc-tags">
+            <span>React Native</span><span>Flutter</span><span>Node.js</span><span>Firebase</span><span>PWA</span>
+          </div>
+          <a class="svc-cta" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Build Your App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="service-card svc-orange reveal" data-tilt>
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".7" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".7" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".7" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".7" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.6-.4-1.1a1.6 1.6 0 0 1 1.6-1.6h2c3 0 5.5-2.5 5.5-5.6C22 6 17.5 2 12 2z"/></svg>
+          </div>
+          <h3>Graphic Design</h3>
+          <p>Need a design? Just DM us. Logos, banners, social graphics — we make your brand impossible to ignore.</p>
+          <ul class="svc-list">
+            <li>Logos &amp; brand identity</li>
+            <li>Social media graphics</li>
+            <li>Marketing materials</li>
+            <li>Photo &amp; video editing</li>
+          </ul>
+          <div class="svc-tags">
+            <span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>Branding</span><span>Motion</span>
+          </div>
+          <a class="svc-cta" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Start Designing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="cta-strip reveal">
+      <div class="cta-strip-inner">
+        <div class="cta-strip-text">
+          <h2>Ready to start advertising your business?</h2>
+          <p>Send us a DM and we get to work immediately. We move fast and we deliver.</p>
+        </div>
+        <div class="cta-strip-btns">
+          <a class="btn-primary magnetic" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Send Us a DM</a>
+          <a class="btn-ghost magnetic" href="mailto:victorngozi111@gmail.com">Email Us</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="why" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">Why Choose Us</p>
+          <h2>We work as a team.<br />We work very fast.</h2>
+        </div>
+        <p class="section-desc">We give you the best. No excuses, no delays — just real results.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card why-blue reveal" data-tilt>
+          <span class="why-num">01</span>
+          <h3>We Work as a Team</h3>
+          <p>Every project gets the full team behind it. We collaborate, communicate, and push each other to deliver excellence.</p>
+        </article>
+        <article class="why-card why-green reveal" data-tilt>
+          <span class="why-num">02</span>
+          <h3>We Work Very Fast</h3>
+          <p>Time is money. We move fast without cutting corners — clear timelines and updates all the way through.</p>
+        </article>
+        <article class="why-card why-purple reveal" data-tilt>
+          <span class="why-num">03</span>
+          <h3>Trust. Clarity. Results.</h3>
+          <p>Results you can see. No hidden costs, no vague timelines — just honest work and outcomes you can count on.</p>
+        </article>
+        <article class="why-card why-orange reveal" data-tilt>
+          <span class="why-num">04</span>
+          <h3>We Give You the Best</h3>
+          <p>Our standard is high because your business deserves it. Every project is treated like our most important one.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">How We Work</p>
+          <h2>Simple. Clear. Fast.</h2>
+        </div>
+        <p class="section-desc">From your first DM to a live product — the same clear process every time.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-step reveal">
+          <span class="step-badge">01</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Brief</h3>
+          <p>DM us on WhatsApp or use the chat. Tell us your idea and budget.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="step-badge">02</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.6 7.6"/></svg>
+          </div>
+          <h3>Design</h3>
+          <p>We send you mockups. You review, give feedback, we refine.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="step-badge">03</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+          </div>
+          <h3>Build</h3>
+          <p>We build fast with clean code, and keep you updated along the way.</p>
+        </article>
+        <article class="process-step reveal">
+          <span class="step-badge">04</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="M12 15 9 12a11 11 0 0 1 6-9c2.5 0 4 1.5 4 4a11 11 0 0 1-9 6z"/><path d="M15 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+          </div>
+          <h3>Launch</h3>
+          <p>We test, then go live. Post-launch support is included — we stay with you.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">About Us</p>
+          <h2>We are V Ventures.</h2>
+        </div>
+        <p class="section-desc">A team that builds with purpose — fast, precise, and reliable.</p>
+      </div>
+      <div class="about-wrap">
+        <div class="about-left reveal">
+          <h3>Founded in Delta State, Nigeria</h3>
+          <p>V Ventures Tech Solutions was built with one mission: deliver premium websites, apps, and graphic design at the speed modern businesses need. We started lean, but our results spoke loud enough to grow a solid team.</p>
+          <p>We don't treat any project as small. Landing page or full platform, every client gets the same standard: excellent work, clear communication, fast delivery.</p>
+          <div class="about-values">
+            <div class="av-item">
+              <span class="av-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </span>
+              <div><strong>Speed Without Compromise</strong><span>We move fast and never cut corners doing it.</span></div>
+            </div>
+            <div class="av-item">
+              <span class="av-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8" fill="currentColor"/></svg>
+              </span>
+              <div><strong>Precision Work</strong><span>Every pixel and every line of code is intentional.</span></div>
+            </div>
+            <div class="av-item">
+              <span class="av-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+              </span>
+              <div><strong>Real Partnership</strong><span>We treat your project like it's ours — because it matters.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-right reveal">
+          <div class="about-card" data-tilt>
+            <div class="about-photo-wrap"><img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="about-photo" /></div>
+            <strong class="about-name">Victor</strong>
+            <span class="about-role">Founder &amp; Lead Developer</span>
+            <p class="about-bio">Building digital solutions from Delta State, Nigeria — a team that punches well above its weight class.</p>
+            <div class="about-socials">
+              <a href="https://wa.me/2349138966840" target="_blank" rel="noreferrer" class="about-social wa">WhatsApp</a>
+              <a href="mailto:victorngozi111@gmail.com" class="about-social em">Email</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section skills">
-      <div class="section-head">
-        <h2>Skills</h2>
-        <p>Creative and technical execution with sharp delivery.</p>
-      </div>
-      <div class="pill-grid">
-        <span class="pill">Video Editing</span>
-        <span class="pill">Photo Editing</span>
-        <span class="pill">Graphic Design</span>
-        <span class="pill">Web Development</span>
-        <span class="pill">App Development</span>
-        <span class="pill">API Integration</span>
-        <span class="pill">Software Engineering</span>
-        <span class="pill">Web Design</span>
-        <span class="pill">Frontend Development</span>
-        <span class="pill">Testing & Simulation</span>
-        <span class="pill">Content Creation</span>
-        <span class="pill">Digital Marketing</span>
-        <span class="pill">Creative Direction</span>
-        <span class="pill">Tech Support</span>
-          <span class="pill">Programming Languages</span>
-        <span class="pill">PHP</span>
-        <span class="pill">Python</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">TypeScript</span>
-          <span class="pill">Java</span>
-          <span class="pill">C</span>
-          <span class="pill">C++</span>
-          <span class="pill">C#</span>
-          <span class="pill">Go</span>
-          <span class="pill">Rust</span>
-          <span class="pill">SQL</span>
-          <span class="pill">Dart</span>
-          <span class="pill">Kotlin</span>
-          <span class="pill">Swift</span>
-      </div>
-      <div class="tools">
-        <div class="tool-card">HTML, CSS, JavaScript</div>
-        <div class="tool-card">PHP</div>
-        <div class="tool-card">Python</div>
-        <div class="tool-card">React</div>
-        <div class="tool-card">Node.js</div>
-        <div class="tool-card">API Tools</div>
-          <div class="tool-card">Firebase</div>
-          <div class="tool-card">MongoDB</div>
-          <div class="tool-card">PostgreSQL</div>
-      </div>
-    </section>
-
-    <section id="projects" class="section projects">
-      <div class="section-head">
-        <h2>Projects & Links</h2>
-        <p>Selected creative and technical work with standout visuals.</p>
+    <section id="work" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">Our Work</p>
+          <h2>Live projects &amp; demos.</h2>
+        </div>
+        <p class="section-desc">Click any project to preview it.</p>
       </div>
       <div class="project-grid">
-        <article class="project-card">
-          <div class="project-thumb icon-thumb">🚀</div>
-          <div class="project-meta">
-            <span class="project-icon">🚀</span>
-            <span>Web Platform</span>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://thirdeye-web-version.netlify.app/"
+          data-title="THIRD EYE Web Version"
+          data-desc="Smart web-based platform with multiple features and a polished user experience built for real users."
+          data-tag="Web Platform" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#0c1f4a 0%,#0ea5e9 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">thirdeye-web-version.netlify.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#0c1f4a 0%,#0ea5e9 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fthirdeye-web-version.netlify.app%2F?w=640" alt="THIRD EYE screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
           </div>
-          <h3>THIRD EYE Web Version</h3>
-          <p>Smart web-based platform with multiple features and a polished user experience.</p>
-          <a class="tag" href="https://thirdeye-web-version.netlify.app/" target="_blank" rel="noreferrer">View Project</a>
-        </article>
-        <article class="project-card">
-          <div class="project-thumb icon-thumb">🎨</div>
-          <div class="project-meta">
-            <span class="project-icon">🎨</span>
-            <span>Creative</span>
+          <div class="project-body">
+            <span class="proj-tag">Web Platform</span>
+            <h3>THIRD EYE Web Version</h3>
+            <p>Smart web-based platform with multiple features and polished UX.</p>
+            <span class="proj-link">Click to Preview</span>
           </div>
-          <h3>Creative & Tech Projects</h3>
-          <p>Additional creative and technical projects available on request.</p>
-          <a class="tag" href="https://wa.me/2348061745257" target="_blank" rel="noreferrer">On Request</a>
         </article>
-        <article class="project-card">
-          <div class="project-thumb icon-thumb">📦</div>
-          <div class="project-meta">
-            <span class="project-icon">📦</span>
-            <span>Tracking Simulation</span>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://cargo-delivery-express.netlify.app/"
+          data-title="Online Delivery Tracker"
+          data-desc="Clean delivery tracking simulation with interactive flow and a professional UX. Real-time order status tracking."
+          data-tag="Tracking App" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#0c2461 0%,#1289A7 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">cargo-delivery-express.netlify.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#0c2461 0%,#1289A7 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fcargo-delivery-express.netlify.app%2F?w=640" alt="Delivery Tracker screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
           </div>
-          <h3>Online Delivery Tracking</h3>
-          <p>Simulation for online delivery tracking with clean UX and interactive flow.</p>
-          <a class="tag" href="https://cargo-delivery-express.netlify.app/" target="_blank" rel="noreferrer">View Project</a>
-        </article>
-        <article class="project-card">
-          <div class="project-thumb icon-thumb">⬇️</div>
-          <div class="project-meta">
-            <span class="project-icon">⬇️</span>
-            <span>Downloader</span>
+          <div class="project-body">
+            <span class="proj-tag">Tracking App</span>
+            <h3>Online Delivery Tracker</h3>
+            <p>Interactive delivery tracking with real-time status flow.</p>
+            <span class="proj-link">Click to Preview</span>
           </div>
-          <h3>Video Downloader Website</h3>
-          <p>Modern video downloader website with simple, focused user experience.</p>
-          <a class="tag" href="https://ultra-social-downloader.vercel.app/" target="_blank" rel="noreferrer">View Project</a>
         </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://ultra-social-downloader.vercel.app/"
+          data-title="Social Video Downloader"
+          data-desc="Modern video downloader tool with a clean, focused user experience. Download from multiple platforms instantly."
+          data-tag="Web Tool" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#1a0533 0%,#6441a5 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">ultra-social-downloader.vercel.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#1a0533 0%,#6441a5 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fultra-social-downloader.vercel.app%2F?w=640" alt="Video Downloader screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">Web Tool</span>
+            <h3>Social Video Downloader</h3>
+            <p>Download from any platform. Fast and clean experience.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url=""
+          data-title="NovaPay Banking App"
+          data-desc="A full-featured digital banking platform with account management, transfers, transaction history, and a clean modern dashboard."
+          data-tag="FinTech App" data-live="false"
+          data-screen-bg="linear-gradient(135deg,#022c22 0%,#10b981 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">novapay.vventures.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#022c22 0%,#10b981 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.chime.com?w=640" alt="NovaPay Banking screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="coming-badge">SOON</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">FinTech App</span>
+            <h3>NovaPay Banking App</h3>
+            <p>Digital banking platform with transfers and real-time balance.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url=""
+          data-title="EduSpace Study Portal"
+          data-desc="A complete e-learning platform. Browse courses, track progress, take quizzes, and manage your academic journey in one place."
+          data-tag="Education" data-live="false"
+          data-screen-bg="linear-gradient(135deg,#0c1e3d 0%,#2563eb 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">eduspace.vventures.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#0c1e3d 0%,#2563eb 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.coursera.org?w=640" alt="EduSpace Study Portal screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="coming-badge">SOON</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">Education</span>
+            <h3>EduSpace Study Portal</h3>
+            <p>E-learning platform with courses, quizzes &amp; progress tracking.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal more-card" data-tilt
+          data-url="https://wa.me/2349138966840"
+          data-title="More Projects Available"
+          data-desc="We have many more creative and technical projects to show you — from e-commerce platforms to custom dashboards. Reach out and we'll share everything."
+          data-tag="On Request" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#b45309 0%,#f59e0b 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">wa.me/2349138966840</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#b45309 0%,#f59e0b 100%)">
+              <div class="pb-overlay"><span class="pb-preview-btn">Contact</span></div>
+              <span class="proj-label">+ MORE</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">On Request</span>
+            <h3>More Projects Available</h3>
+            <p>Many more creative works to show. Reach out and we'll share them.</p>
+            <span class="proj-link">Request to See More</span>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <section id="services" class="section services">
-      <div class="section-head">
-        <h2>Services</h2>
-        <p>Creative and technical services designed to stand out.</p>
-      </div>
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Video & Motion</h3>
-          <p>Editing, transitions, captions, sound sync, and 2D/3D motion graphics that feel cinematic.</p>
-        </div>
-        <div class="service-card">
-          <h3>Photo & Design</h3>
-          <p>Retouching, manipulation, thumbnails, social posts, and brand visuals with depth.</p>
-        </div>
-        <div class="service-card">
-          <h3>Web & App</h3>
-          <p>Responsive websites, web apps, UI kits, prototypes, and full builds with clean UX.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="why" class="section why">
-      <div class="section-head">
-        <h2>Why Choose Us</h2>
-        <p>Focused delivery, clear communication, and results you can trust.</p>
-      </div>
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Solution-First Approach</h3>
-          <p>Every project is built around the problem you want solved, not just visuals.</p>
-        </div>
-        <div class="service-card">
-          <h3>Creative + Technical Balance</h3>
-          <p>Strong design sense with solid engineering for reliable, scalable outputs.</p>
-        </div>
-        <div class="service-card">
-          <h3>Fast, Clear Delivery</h3>
-          <p>Quick turnaround with transparent updates and professional execution.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section timeline">
-      <div class="section-head">
-        <h2>Work Experience</h2>
-        <p>Verified client work and delivery history.</p>
-      </div>
-      <div class="timeline-list">
-        <div class="timeline-item">
-          <span class="time">1 Week</span>
-          <div>
-            <h3>SM Teja Tech Solutions — India</h3>
-            <p>Client: R. Teja</p>
-            <ul>
-              <li>Delivered multiple tech and creative projects</li>
-              <li>Built and designed websites</li>
-              <li>Tested and improved applications</li>
-              <li>Handled API and web-based systems</li>
-            </ul>
-            <a class="tag" href="https://thirdeye-web-version.netlify.app/" target="_blank" rel="noreferrer">Client Website</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p>Let’s create something bold together.</p>
-      </div>
-      <div class="contact-card">
+    <section id="testimonials" class="section">
+      <div class="section-head reveal">
         <div>
-          <h3>Let’s build something unforgettable</h3>
-          <p>Share your vision and I’ll respond promptly.</p>
+          <p class="section-label">Client Reviews</p>
+          <h2>What our clients say.</h2>
         </div>
-        <div class="contact-actions">
-            <a class="primary" href="https://wa.me/2348061745257" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
-            <a class="ghost" href="mailto:victorngozi111@gmail.com">Send an Email</a>
-          <div class="contact-info">
-            <span>Email: victorngozi111@gmail.com</span>
-            <span>Phone: 08061745257</span>
-            <span>Location: Delta State, Nigeria</span>
+        <p class="section-desc">Real words from real people. No filters, no edits.</p>
+      </div>
+      <div class="testimonial-grid">
+        <article class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-text">V Ventures built our business website in under a week. Clean, fast, exactly what we asked for. We've already referred them to three other businesses.</p>
+          <div class="tcard-author">
+            <div class="tcard-avatar ta-blue">AO</div>
+            <div><strong>Adaeze Okafor</strong><span>Business Owner, Asaba</span></div>
+          </div>
+        </article>
+        <article class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-text">Professional, fast, and delivered a better result than I imagined. They understood exactly what I needed without me explaining it ten times. World-class.</p>
+          <div class="tcard-author">
+            <div class="tcard-avatar ta-green">CU</div>
+            <div><strong>Chidi Udo</strong><span>Tech Entrepreneur, Lagos</span></div>
+          </div>
+        </article>
+        <article class="tcard reveal">
+          <div class="tcard-stars">★★★★★</div>
+          <p class="tcard-text">They handled our logo, website, and app in one go. Outstanding quality, clear updates throughout, and they delivered on time. Absolutely recommend.</p>
+          <div class="tcard-author">
+            <div class="tcard-avatar ta-orange">FI</div>
+            <div><strong>Fatima Ibrahim</strong><span>Brand Owner, Abuja</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">FAQ</p>
+          <h2>Questions we get daily.</h2>
+        </div>
+        <p class="section-desc">Straight answers. No corporate speak, no confusion.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-q">How long does it take to build a website?</summary>
+          <div class="faq-a"><p>A standard website or landing page takes 3–7 days. Complex projects like e-commerce stores or web apps take 2–4 weeks. We give you a clear timeline before we start — no surprises.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Do I need to pay a deposit?</summary>
+          <div class="faq-a"><p>Yes — we require 50% upfront to begin work. The remaining 50% is paid on final delivery. This keeps both sides committed and protects your investment.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Can I see examples of your past work?</summary>
+          <div class="faq-a"><p>Absolutely. Check the Work section on this page for live examples. You can also DM us on WhatsApp and we'll send a full portfolio with more projects and case studies.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What if I don't like the design?</summary>
+          <div class="faq-a"><p>We include 2–3 revision rounds in every project. We work closely with you on the design before moving to development, and keep refining until you're happy.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Do you build for both mobile and desktop?</summary>
+          <div class="faq-a"><p>Always. Every website and app we deliver is fully responsive — looking and working perfectly on phones, tablets, and computers. Mobile-first is our standard.</p></div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">How do I get started?</summary>
+          <div class="faq-a"><p>Just DM us on WhatsApp (+234 913 896 6840) or use the chat widget at the bottom of this page. Tell us what you need and we reply fast with pricing and next steps. No commitment needed.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">Get in Touch</p>
+          <h2>Let's build something great.</h2>
+        </div>
+        <p class="section-desc">Simple. Fast. Direct. We respond right away.</p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-main reveal">
+          <h3>Quick Links</h3>
+          <p>Prefer to reach us directly? We're always online.</p>
+          <div class="contact-methods">
+            <a class="cmethod whatsapp-btn" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">
+              <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" class="cmethod-icon" />
+              <div><strong>WhatsApp DM</strong><span>+234 913 896 6840</span></div>
+              <span class="arrow">→</span>
+            </a>
+            <a class="cmethod email-btn" href="mailto:victorngozi111@gmail.com">
+              <img src="https://cdn.simpleicons.org/gmail/ffffff" alt="" class="cmethod-icon" />
+              <div><strong>Send an Email</strong><span>victorngozi111@gmail.com</span></div>
+              <span class="arrow">→</span>
+            </a>
+          </div>
+          <div class="contact-info-row">
+            <span>Delta State, Nigeria</span>
+            <span>09138966840</span>
+          </div>
+          <div class="social-mini">
+            <a href="https://www.tiktok.com/@smarterv01?_r=1&_t=ZS-93NKaqoREro" target="_blank" rel="noreferrer" class="smini-link">
+              <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok" class="smini-icon" /> TikTok
+            </a>
+            <a href="https://youtube.com/@smarterv01?si=GRvWuMffq0guRL8S" target="_blank" rel="noreferrer" class="smini-link">
+              <img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube" class="smini-icon" /> YouTube
+            </a>
           </div>
         </div>
-      </div>
-      <div class="social-card">
-        <h3>This is how you can reach out to me</h3>
-        <p>Connect with me on any platform below.</p>
-        <div class="social-grid">
-          <a class="social-link" href="https://www.instagram.com/smarter.v082?igsh=MWFkdnU2OWZ2ZHQzMA==" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/instagram/0ea5e9" alt="Instagram" />
-            <span>Instagram</span>
-          </a>
-          <a class="social-link" href="https://www.tiktok.com/@smarterv01?_r=1&_t=ZS-93NKaqoREro" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/tiktok/0ea5e9" alt="TikTok" />
-            <span>TikTok</span>
-          </a>
-          <a class="social-link" href="https://www.facebook.com/share/1HMGpgbrWE/" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/facebook/0ea5e9" alt="Facebook" />
-            <span>Facebook</span>
-          </a>
-          <a class="social-link" href="https://youtube.com/@smarterv01?si=GRvWuMffq0guRL8S" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/youtube/0ea5e9" alt="YouTube" />
-            <span>YouTube</span>
-          </a>
-          <a class="social-link" href="https://www.threads.com/@smarter.v082" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/threads/0ea5e9" alt="Threads" />
-            <span>Threads</span>
-          </a>
-          <a class="social-link" href="https://wa.me/2348061745257" target="_blank" rel="noreferrer">
-            <img class="social-icon" src="https://cdn.simpleicons.org/whatsapp/0ea5e9" alt="WhatsApp" />
-            <span>WhatsApp</span>
-          </a>
-          <a class="social-link" href="mailto:victorngozi111@gmail.com">
-            <img class="social-icon" src="https://cdn.simpleicons.org/gmail/0ea5e9" alt="Email" />
-            <span>Email</span>
-          </a>
+
+        <div class="contact-form-panel reveal">
+          <h3>Send us a message</h3>
+          <p>Fill this in and we'll get back to you fast — usually within the hour.</p>
+          <form id="contact-form" class="cform" novalidate>
+            <div class="cform-row">
+              <label class="cform-label" for="cf-name">Your Name</label>
+              <input class="cform-input" type="text" id="cf-name" name="cf-name" placeholder="e.g. John Doe" required maxlength="80" autocomplete="name" />
+            </div>
+            <div class="cform-row">
+              <label class="cform-label" for="cf-phone">WhatsApp / Phone</label>
+              <input class="cform-input" type="tel" id="cf-phone" name="cf-phone" placeholder="+234 xxx xxx xxxx" required maxlength="20" autocomplete="tel" />
+            </div>
+            <div class="cform-row">
+              <label class="cform-label" for="cf-service">Service Needed</label>
+              <select class="cform-input cform-select" id="cf-service" name="cf-service" required>
+                <option value="">Pick a service…</option>
+                <option value="Website Development">Website Development</option>
+                <option value="App Development">App Development</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Other">Other / Not sure</option>
+              </select>
+            </div>
+            <div class="cform-row">
+              <label class="cform-label" for="contact-msg">Tell us about your project <span id="msg-char-count" class="char-count">0/500</span></label>
+              <textarea class="cform-input cform-textarea" id="contact-msg" name="cf-message" placeholder="Your idea, goals, and budget…" required maxlength="500" rows="4"></textarea>
+            </div>
+            <div id="contact-status" class="form-status"></div>
+            <button class="cform-submit btn-primary magnetic" type="submit" id="contact-submit">Send Message →</button>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>© 2026 Victor Innovations.</span>
+    <div class="footer-brand">
+      <div class="footer-logo-wrap"><img src="my logo.png" alt="V Ventures" class="footer-logo-img" /></div>
+      <span>© 2026 V Ventures Tech Solutions</span>
+    </div>
+    <p class="footer-tagline">Trust. Clarity. Results.</p>
     <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </footer>
 
+  <div id="chat-widget">
+    <div id="chat-window" class="chat-hidden">
+      <div class="chat-header">
+        <div class="chat-hinfo">
+          <div class="chat-logo-wrap">
+            <img src="my logo.png" alt="V Ventures" class="chat-logo-img" />
+            <span class="chat-online-dot"></span>
+          </div>
+          <div>
+            <strong>V Ventures Support</strong>
+            <span class="chat-online">Online · typically replies in mins</span>
+          </div>
+        </div>
+        <div class="chat-header-btns">
+          <button id="chat-end-btn" class="chat-end-btn chat-hidden" title="End chat">End</button>
+          <button id="chat-close" aria-label="Close chat">✕</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg admin-msg">
+          <p>Hi there! 👋 Welcome to V Ventures Tech Solutions. How can we help you today?</p>
+          <span class="msg-time">Just now</span>
+        </div>
+      </div>
+      <div id="chat-ended-state" class="chat-hidden">
+        <div class="chat-ended-inner">
+          <span>Chat ended</span>
+          <button id="chat-new-btn">New Chat</button>
+        </div>
+      </div>
+      <div id="chat-start-form">
+        <input type="text" id="chat-name" placeholder="Your name (optional)" maxlength="40" autocomplete="off" />
+        <div class="chat-input-row">
+          <input type="text" id="chat-first-msg" placeholder="Type your message..." maxlength="500" autocomplete="off" />
+          <button id="chat-start-btn" aria-label="Send">→</button>
+        </div>
+      </div>
+      <div id="chat-reply-area" class="chat-hidden">
+        <div class="chat-input-row">
+          <input type="text" id="chat-input" placeholder="Type a message…" maxlength="500" autocomplete="off" />
+          <button id="chat-send" class="chat-send-btn" aria-label="Send">➤</button>
+        </div>
+        <div class="chat-action-bar">
+          <button id="chat-file-btn" class="chat-img-btn" title="Send an image">🖼 Send Image</button>
+          <input type="file" id="chat-file-input" accept="image/*" style="display:none" />
+        </div>
+        <div id="file-upload-progress" class="file-upload-progress chat-hidden">
+          <div class="file-prog-bar" id="file-progress-bar"></div>
+          <span id="file-progress-label">Processing…</span>
+        </div>
+      </div>
+    </div>
+    <button id="chat-toggle" aria-label="Chat with us">
+      <span id="chat-toggle-icon">💬</span>
+      <span class="chat-toggle-label">Chat with us</span>
+      <span class="chat-unread-badge" id="chat-unread" style="display:none">1</span>
+    </button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
+  <script type="module" src="chat.js"></script>
+  <script type="module" src="contact-form.js"></script>
 </body>
 </html>
