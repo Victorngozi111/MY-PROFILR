@@ -31,6 +31,9 @@ Project: `v-ventures-me-portfolio`. Config duplicated in chat.js, contact-form.j
 - User wants replies short, main point first; minimal token use.
 - Update this file after every change (log below).
 
+## Hosting
+NOT deployed anywhere as of 2026-07-12: GitHub repo Victorngozi111/MY-PROFILR exists but GitHub Pages is off, no vercel.json/netlify.toml/.vercel/.netlify. User views via Live Server (127.0.0.1:5500). Recommend Netlify or Vercel import of the GitHub repo. `gh` CLI not installed; git push not yet done after redesign commit.
+
 ## Change log
 - 2026-07-12: Created NOTES.md.
 - 2026-07-12: **Site upgrade** (user picked all: visual, SEO, sections, chat):
