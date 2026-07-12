@@ -32,7 +32,7 @@ Project: `v-ventures-me-portfolio`. Config duplicated in chat.js, contact-form.j
 - Update this file after every change (log below).
 
 ## Hosting
-NOT deployed anywhere as of 2026-07-12: GitHub repo Victorngozi111/MY-PROFILR exists but GitHub Pages is off, no vercel.json/netlify.toml/.vercel/.netlify. User views via Live Server (127.0.0.1:5500). Recommend Netlify or Vercel import of the GitHub repo. `gh` CLI not installed; git push not yet done after redesign commit.
+Netlify project "victor-innovations-tech", domain **vventurestechsoloutions.dev**. Old site deployed via Netlify Drop (drag-and-drop) on Jun 2 2026, NOT linked to the GitHub repo. GitHub repo: Victorngozi111/MY-PROFILR (pushed up to date 2026-07-12, commit 8a6a7fe). Recommended to user: link the GitHub repo in Netlify so pushes auto-deploy; otherwise re-drag the folder (Deploys page) after each change. `gh` CLI not installed.
 
 ## Change log
 - 2026-07-12: Created NOTES.md.
