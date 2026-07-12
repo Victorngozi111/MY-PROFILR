@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>V Ventures Tech Solutions — Web, App & Graphic Design</title>
-  <meta name="description" content="V Ventures Tech Solutions builds fast websites, powerful apps, and bold graphic design. A team that delivers results you can trust — from Delta State, Nigeria." />
+  <title>V Ventures Tech Solutions | Web, App & Graphic Design</title>
+  <meta name="description" content="V Ventures Tech Solutions builds fast websites, powerful apps, and bold graphic design. A team that delivers results you can trust, from Delta State, Nigeria." />
+  <meta name="theme-color" content="#060b16" />
+  <link rel="icon" type="image/png" href="my logo.png" />
+  <link rel="apple-touch-icon" href="my logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="V Ventures Tech Solutions | Web, App & Graphic Design" />
+  <meta property="og:description" content="Fast websites, powerful apps, and bold graphic design. Trusted results from Delta State, Nigeria." />
+  <meta property="og:image" content="my logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="V Ventures Tech Solutions | Web, App & Graphic Design" />
+  <meta name="twitter:description" content="Fast websites, powerful apps, and bold graphic design. Trusted results from Delta State, Nigeria." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "V Ventures Tech Solutions",
+    "description": "Website development, app development and graphic design agency in Delta State, Nigeria.",
+    "telephone": "+2349138966840",
+    "email": "victorngozi111@gmail.com",
+    "address": { "@type": "PostalAddress", "addressRegion": "Delta State", "addressCountry": "NG" },
+    "founder": { "@type": "Person", "name": "Victor" },
+    "sameAs": ["https://www.tiktok.com/@smarterv01", "https://youtube.com/@smarterv01"]
+  }
+  </script>
   <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,11 +37,9 @@
 <body>
 
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-vignette" aria-hidden="true"></div>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
 
   <div class="preloader" id="preloader" aria-hidden="true">
     <div class="pre-inner">
@@ -81,7 +102,8 @@
     <nav class="mobile-nav">
       <a href="#services" class="mnav-link">Services</a>
       <a href="#why" class="mnav-link">Why Us</a>
-      <a href="#work" class="mnav-link">Work</a>
+      <a href="#work" class="mnav-link">Projects</a>
+      <a href="#pricing" class="mnav-link">Pricing</a>
       <a href="#about" class="mnav-link">About</a>
       <a href="#faq" class="mnav-link">FAQ</a>
       <a href="#contact" class="mnav-link">Contact</a>
@@ -100,7 +122,8 @@
     <nav class="nav">
       <a href="#services">Services</a>
       <a href="#why">Why Us</a>
-      <a href="#work">Work</a>
+      <a href="#work">Projects</a>
+      <a href="#pricing">Pricing</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
@@ -122,7 +145,7 @@
       <div class="hero-content">
         <p class="eyebrow"><span class="eyebrow-dot"></span>Web Dev · App Dev · Design</p>
         <h1 class="hero-title" data-split>We Build Fast.<br /><span class="grad">We Deliver Results.</span></h1>
-        <p class="sub">V Ventures Tech Solutions builds websites and apps that actually work. We move as one team, ship fast, and hand you the absolute best — every single time.</p>
+        <p class="sub">V Ventures Tech Solutions builds websites and apps that actually work. We move as one team, ship fast, and hand you the absolute best, every single time.</p>
         <div class="hero-actions">
           <a class="btn-primary magnetic" href="https://wa.me/2349138966840" target="_blank" rel="noreferrer">Start Your Project</a>
           <a class="btn-ghost magnetic" href="#work">View Our Work</a>
@@ -139,38 +162,15 @@
           <div class="portrait-layer p-glow" data-depth="0.10"></div>
           <div class="portrait-frame" data-depth="0.20">
             <div class="portrait-ring"></div>
-            <img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="portrait-img" />
-            <div class="portrait-scan"></div>
+            <img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="portrait-img" fetchpriority="high" />
           </div>
           <div class="chip chip-a" data-depth="0.55">
             <span class="chip-dot ok"></span> Available for Projects
           </div>
-          <div class="chip chip-b" data-depth="0.45">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Fast Delivery
-          </div>
-          <div class="chip chip-c" data-depth="0.50">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3z"/></svg>
-            Trusted Results
-          </div>
         </div>
       </div>
 
-      <a class="scroll-cue" href="#services" aria-label="Scroll down">
-        <span class="scroll-cue-line"></span>
-      </a>
     </section>
-
-    <div class="marquee-wrap" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Fast Delivery</span><i>✦</i><span>We Work As A Team</span><i>✦</i>
-        <span>Results You Can Trust</span><i>✦</i><span>Website Development</span><i>✦</i>
-        <span>App Development</span><i>✦</i><span>Graphic Design</span><i>✦</i>
-        <span>Fast Delivery</span><i>✦</i><span>We Work As A Team</span><i>✦</i>
-        <span>Results You Can Trust</span><i>✦</i><span>Website Development</span><i>✦</i>
-        <span>App Development</span><i>✦</i><span>Graphic Design</span><i>✦</i>
-      </div>
-    </div>
 
     <section id="services" class="section">
       <div class="section-head reveal">
@@ -187,7 +187,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
           </div>
           <h3>Website Development</h3>
-          <p>Clean, fast, responsive websites tailored to your business — from landing pages to full web platforms.</p>
+          <p>Clean, fast, responsive websites tailored to your business, from landing pages to full web platforms.</p>
           <ul class="svc-list">
             <li>Custom landing pages</li>
             <li>Business &amp; portfolio sites</li>
@@ -227,7 +227,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".7" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".7" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".7" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".7" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.6-.4-1.1a1.6 1.6 0 0 1 1.6-1.6h2c3 0 5.5-2.5 5.5-5.6C22 6 17.5 2 12 2z"/></svg>
           </div>
           <h3>Graphic Design</h3>
-          <p>Need a design? Just DM us. Logos, banners, social graphics — we make your brand impossible to ignore.</p>
+          <p>Need a design? Just DM us. Logos, banners, social graphics. We make your brand impossible to ignore.</p>
           <ul class="svc-list">
             <li>Logos &amp; brand identity</li>
             <li>Social media graphics</li>
@@ -264,7 +264,7 @@
           <p class="section-label">Why Choose Us</p>
           <h2>We work as a team.<br />We work very fast.</h2>
         </div>
-        <p class="section-desc">We give you the best. No excuses, no delays — just real results.</p>
+        <p class="section-desc">We give you the best. No excuses, no delays. Just real results.</p>
       </div>
       <div class="why-grid">
         <article class="why-card why-blue reveal" data-tilt>
@@ -275,12 +275,12 @@
         <article class="why-card why-green reveal" data-tilt>
           <span class="why-num">02</span>
           <h3>We Work Very Fast</h3>
-          <p>Time is money. We move fast without cutting corners — clear timelines and updates all the way through.</p>
+          <p>Time is money. We move fast without cutting corners. Clear timelines and updates all the way through.</p>
         </article>
         <article class="why-card why-purple reveal" data-tilt>
           <span class="why-num">03</span>
           <h3>Trust. Clarity. Results.</h3>
-          <p>Results you can see. No hidden costs, no vague timelines — just honest work and outcomes you can count on.</p>
+          <p>Results you can see. No hidden costs, no vague timelines. Just honest work and outcomes you can count on.</p>
         </article>
         <article class="why-card why-orange reveal" data-tilt>
           <span class="why-num">04</span>
@@ -296,7 +296,7 @@
           <p class="section-label">How We Work</p>
           <h2>Simple. Clear. Fast.</h2>
         </div>
-        <p class="section-desc">From your first DM to a live product — the same clear process every time.</p>
+        <p class="section-desc">From your first DM to a live product, the same clear process every time.</p>
       </div>
       <div class="process-grid">
         <article class="process-step reveal">
@@ -329,7 +329,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="M12 15 9 12a11 11 0 0 1 6-9c2.5 0 4 1.5 4 4a11 11 0 0 1-9 6z"/><path d="M15 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
           </div>
           <h3>Launch</h3>
-          <p>We test, then go live. Post-launch support is included — we stay with you.</p>
+          <p>We test, then go live. Post-launch support is included. We stay with you.</p>
         </article>
       </div>
     </section>
@@ -340,7 +340,7 @@
           <p class="section-label">About Us</p>
           <h2>We are V Ventures.</h2>
         </div>
-        <p class="section-desc">A team that builds with purpose — fast, precise, and reliable.</p>
+        <p class="section-desc">A team that builds with purpose: fast, precise, and reliable.</p>
       </div>
       <div class="about-wrap">
         <div class="about-left reveal">
@@ -364,16 +364,16 @@
               <span class="av-ico">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
               </span>
-              <div><strong>Real Partnership</strong><span>We treat your project like it's ours — because it matters.</span></div>
+              <div><strong>Real Partnership</strong><span>We treat your project like it's ours, because it matters.</span></div>
             </div>
           </div>
         </div>
         <div class="about-right reveal">
           <div class="about-card" data-tilt>
-            <div class="about-photo-wrap"><img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="about-photo" /></div>
+            <div class="about-photo-wrap"><img src="my picture.jpg" alt="Victor, Founder of V Ventures" class="about-photo" loading="lazy" decoding="async" /></div>
             <strong class="about-name">Victor</strong>
             <span class="about-role">Founder &amp; Lead Developer</span>
-            <p class="about-bio">Building digital solutions from Delta State, Nigeria — a team that punches well above its weight class.</p>
+            <p class="about-bio">Building digital solutions from Delta State, Nigeria. A team that punches well above its weight class.</p>
             <div class="about-socials">
               <a href="https://wa.me/2349138966840" target="_blank" rel="noreferrer" class="about-social wa">WhatsApp</a>
               <a href="mailto:victorngozi111@gmail.com" class="about-social em">Email</a>
@@ -386,8 +386,8 @@
     <section id="work" class="section">
       <div class="section-head reveal">
         <div>
-          <p class="section-label">Our Work</p>
-          <h2>Live projects &amp; demos.</h2>
+          <p class="section-label">Our Projects</p>
+          <h2>Real products. Live now.</h2>
         </div>
         <p class="section-desc">Click any project to preview it.</p>
       </div>
@@ -438,67 +438,133 @@
         </article>
 
         <article class="project-card reveal" data-tilt
-          data-url="https://ultra-social-downloader.vercel.app/"
-          data-title="Social Video Downloader"
-          data-desc="Modern video downloader tool with a clean, focused user experience. Download from multiple platforms instantly."
-          data-tag="Web Tool" data-live="true"
-          data-screen-bg="linear-gradient(135deg,#1a0533 0%,#6441a5 100%)">
+          data-url="https://vventuresaas.com"
+          data-title="VVentures Toolbox"
+          data-desc="50+ tools in one toolbox: video downloader, AI background remover, image upscaler, PDF converters, text tools and more. Runs privately in the browser. Built with Next.js, Supabase and Paystack."
+          data-tag="SaaS Platform" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#0c1f4a 0%,#0ea5e9 100%)">
           <div class="project-browser">
-            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">ultra-social-downloader.vercel.app</div></div>
-            <div class="pb-screen" style="background:linear-gradient(135deg,#1a0533 0%,#6441a5 100%)">
-              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fultra-social-downloader.vercel.app%2F?w=640" alt="Video Downloader screenshot" class="pb-screenshot" loading="lazy" />
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">vventuresaas.com</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#0c1f4a 0%,#0ea5e9 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvventuresaas.com%2F?w=640" alt="VVentures Toolbox screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">SaaS Platform</span>
+            <h3>VVentures Toolbox</h3>
+            <p>50+ browser tools in one SaaS. Free to try. Pro unlocks everything via Paystack.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://sms2go.vercel.app"
+          data-title="sms2go: Build Your Community"
+          data-desc="Create a real community in a minute: live chat, group calls, categories and discovery. No phone numbers, no member limits, free to start. Pro communities unlock with Paystack payments."
+          data-tag="Community Platform" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#1e1b4b 0%,#7c3aed 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">sms2go.vercel.app</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#1e1b4b 0%,#7c3aed 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsms2go.vercel.app%2F?w=640" alt="sms2go screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">Community Platform</span>
+            <h3>sms2go</h3>
+            <p>Build your community: live chat, group calls &amp; discovery. Free to start.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://vventuresaas.com/tools/html-viewer"
+          data-title="HTML Viewer"
+          data-desc="Paste, preview and test HTML code instantly in your browser. Free, private and part of the VVentures Toolbox."
+          data-tag="Web Tool" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#042f2e 0%,#14b8a6 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">vventuresaas.com/tools/html-viewer</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#042f2e 0%,#14b8a6 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvventuresaas.com%2Ftools%2Fhtml-viewer?w=640" alt="HTML Viewer screenshot" class="pb-screenshot" loading="lazy" />
               <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
               <span class="live-badge">LIVE</span>
             </div>
           </div>
           <div class="project-body">
             <span class="proj-tag">Web Tool</span>
-            <h3>Social Video Downloader</h3>
-            <p>Download from any platform. Fast and clean experience.</p>
+            <h3>HTML Viewer</h3>
+            <p>Paste and preview HTML code instantly in your browser.</p>
             <span class="proj-link">Click to Preview</span>
           </div>
         </article>
 
         <article class="project-card reveal" data-tilt
-          data-url=""
-          data-title="NovaPay Banking App"
-          data-desc="A full-featured digital banking platform with account management, transfers, transaction history, and a clean modern dashboard."
-          data-tag="FinTech App" data-live="false"
-          data-screen-bg="linear-gradient(135deg,#022c22 0%,#10b981 100%)">
+          data-url="https://vventuresaas.com/tools/video-downloader"
+          data-title="Social Media Video Downloader"
+          data-desc="Download videos from your favorite social platforms in seconds. Fast, free and private, right in your browser."
+          data-tag="Web Tool" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#4c0519 0%,#f43f5e 100%)">
           <div class="project-browser">
-            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">novapay.vventures.app</div></div>
-            <div class="pb-screen" style="background:linear-gradient(135deg,#022c22 0%,#10b981 100%)">
-              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.chime.com?w=640" alt="NovaPay Banking screenshot" class="pb-screenshot" loading="lazy" />
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">vventuresaas.com/tools/video-downloader</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#4c0519 0%,#f43f5e 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvventuresaas.com%2Ftools%2Fvideo-downloader?w=640" alt="Social Media Video Downloader screenshot" class="pb-screenshot" loading="lazy" />
               <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
-              <span class="coming-badge">SOON</span>
+              <span class="live-badge">LIVE</span>
             </div>
           </div>
           <div class="project-body">
-            <span class="proj-tag">FinTech App</span>
-            <h3>NovaPay Banking App</h3>
-            <p>Digital banking platform with transfers and real-time balance.</p>
+            <span class="proj-tag">Web Tool</span>
+            <h3>Social Media Video Downloader</h3>
+            <p>Download videos from social platforms in seconds.</p>
             <span class="proj-link">Click to Preview</span>
           </div>
         </article>
 
         <article class="project-card reveal" data-tilt
-          data-url=""
-          data-title="EduSpace Study Portal"
-          data-desc="A complete e-learning platform. Browse courses, track progress, take quizzes, and manage your academic journey in one place."
-          data-tag="Education" data-live="false"
-          data-screen-bg="linear-gradient(135deg,#0c1e3d 0%,#2563eb 100%)">
+          data-url="https://vventuresaas.com/tools/video-to-mp3"
+          data-title="Video to MP3 Converter"
+          data-desc="Turn any video into MP3 audio in seconds. Private in-browser conversion, free to use."
+          data-tag="Web Tool" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#1e1b4b 0%,#6366f1 100%)">
           <div class="project-browser">
-            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">eduspace.vventures.app</div></div>
-            <div class="pb-screen" style="background:linear-gradient(135deg,#0c1e3d 0%,#2563eb 100%)">
-              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.coursera.org?w=640" alt="EduSpace Study Portal screenshot" class="pb-screenshot" loading="lazy" />
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">vventuresaas.com/tools/video-to-mp3</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#1e1b4b 0%,#6366f1 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvventuresaas.com%2Ftools%2Fvideo-to-mp3?w=640" alt="Video to MP3 Converter screenshot" class="pb-screenshot" loading="lazy" />
               <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
-              <span class="coming-badge">SOON</span>
+              <span class="live-badge">LIVE</span>
             </div>
           </div>
           <div class="project-body">
-            <span class="proj-tag">Education</span>
-            <h3>EduSpace Study Portal</h3>
-            <p>E-learning platform with courses, quizzes &amp; progress tracking.</p>
+            <span class="proj-tag">Web Tool</span>
+            <h3>Video to MP3</h3>
+            <p>Convert any video to MP3 audio in seconds.</p>
+            <span class="proj-link">Click to Preview</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt
+          data-url="https://vventuresaas.com/tools/qr-code-generator"
+          data-title="QR Code Generator"
+          data-desc="Create custom QR codes for links, text and more in one click. Free and instant."
+          data-tag="Web Tool" data-live="true"
+          data-screen-bg="linear-gradient(135deg,#052e16 0%,#22c55e 100%)">
+          <div class="project-browser">
+            <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">vventuresaas.com/tools/qr-code-generator</div></div>
+            <div class="pb-screen" style="background:linear-gradient(135deg,#052e16 0%,#22c55e 100%)">
+              <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvventuresaas.com%2Ftools%2Fqr-code-generator?w=640" alt="QR Code Generator screenshot" class="pb-screenshot" loading="lazy" />
+              <div class="pb-overlay"><span class="pb-preview-btn">Preview</span></div>
+              <span class="live-badge">LIVE</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="proj-tag">Web Tool</span>
+            <h3>QR Code Generator</h3>
+            <p>Create custom QR codes for anything in one click.</p>
             <span class="proj-link">Click to Preview</span>
           </div>
         </article>
@@ -506,12 +572,12 @@
         <article class="project-card reveal more-card" data-tilt
           data-url="https://wa.me/2349138966840"
           data-title="More Projects Available"
-          data-desc="We have many more creative and technical projects to show you — from e-commerce platforms to custom dashboards. Reach out and we'll share everything."
+          data-desc="We have many more creative and technical projects to show you, from e-commerce platforms to custom dashboards. Reach out and we'll share everything."
           data-tag="On Request" data-live="true"
-          data-screen-bg="linear-gradient(135deg,#b45309 0%,#f59e0b 100%)">
+          data-screen-bg="linear-gradient(135deg,#155e75 0%,#22d3ee 100%)">
           <div class="project-browser">
             <div class="pb-topbar"><div class="pb-dots"><span></span><span></span><span></span></div><div class="pb-url">wa.me/2349138966840</div></div>
-            <div class="pb-screen" style="background:linear-gradient(135deg,#b45309 0%,#f59e0b 100%)">
+            <div class="pb-screen" style="background:linear-gradient(135deg,#155e75 0%,#22d3ee 100%)">
               <div class="pb-overlay"><span class="pb-preview-btn">Contact</span></div>
               <span class="proj-label">+ MORE</span>
             </div>
@@ -563,6 +629,66 @@
       </div>
     </section>
 
+    <section id="pricing" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-label">Pricing</p>
+          <h2>Simple packages.<br />Clear value.</h2>
+        </div>
+        <p class="section-desc">Every project is quoted to fit your budget. 50% deposit to start, balance on delivery.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <article class="price-card reveal">
+          <h3 class="price-name">Starter Site</h3>
+          <p class="price-desc">Perfect for small businesses that need a sharp online presence, fast.</p>
+          <div class="price-tag">Custom Quote</div>
+          <p class="price-note">Delivered in 3 to 7 days</p>
+          <ul class="price-feats">
+            <li>Landing page or one-page site</li>
+            <li>Mobile-first responsive design</li>
+            <li>WhatsApp &amp; contact integration</li>
+            <li>Basic SEO setup</li>
+            <li>Free minor edits after launch</li>
+          </ul>
+          <a class="btn-ghost price-cta" href="https://wa.me/2349138966840?text=Hi%20V%20Ventures!%20I%27m%20interested%20in%20the%20Starter%20Site%20package." target="_blank" rel="noreferrer">Get Starter Quote</a>
+        </article>
+
+        <article class="price-card popular reveal">
+          <span class="popular-badge">Most Popular</span>
+          <h3 class="price-name">Business Pro</h3>
+          <p class="price-desc">Full multi-page website or online store built to convert visitors into customers.</p>
+          <div class="price-tag">Custom Quote</div>
+          <p class="price-note">Delivered in 1 to 3 weeks</p>
+          <ul class="price-feats">
+            <li>Multi-page site or e-commerce store</li>
+            <li>Payment &amp; delivery integration</li>
+            <li>Live chat + contact forms</li>
+            <li>Full SEO &amp; social preview setup</li>
+            <li>2 to 3 design revision rounds</li>
+            <li>Post-launch support included</li>
+          </ul>
+          <a class="btn-primary price-cta" href="https://wa.me/2349138966840?text=Hi%20V%20Ventures!%20I%27m%20interested%20in%20the%20Business%20Pro%20package." target="_blank" rel="noreferrer">Get Business Quote</a>
+        </article>
+
+        <article class="price-card reveal">
+          <h3 class="price-name">Custom App</h3>
+          <p class="price-desc">Web or mobile applications built from scratch around your exact idea.</p>
+          <div class="price-tag">Custom Quote</div>
+          <p class="price-note">Timeline based on scope</p>
+          <ul class="price-feats">
+            <li>Web or mobile app development</li>
+            <li>Database, accounts &amp; dashboards</li>
+            <li>API integrations</li>
+            <li>MVP-first approach to save cost</li>
+            <li>Ongoing maintenance available</li>
+          </ul>
+          <a class="btn-ghost price-cta" href="https://wa.me/2349138966840?text=Hi%20V%20Ventures!%20I%20want%20to%20build%20an%20app.%20Can%20we%20talk%3F" target="_blank" rel="noreferrer">Discuss Your App</a>
+        </article>
+
+      </div>
+    </section>
+
     <section id="faq" class="section">
       <div class="section-head reveal">
         <div>
@@ -574,11 +700,11 @@
       <div class="faq-list">
         <details class="faq-item reveal">
           <summary class="faq-q">How long does it take to build a website?</summary>
-          <div class="faq-a"><p>A standard website or landing page takes 3–7 days. Complex projects like e-commerce stores or web apps take 2–4 weeks. We give you a clear timeline before we start — no surprises.</p></div>
+          <div class="faq-a"><p>A standard website or landing page takes 3 to 7 days. Complex projects like e-commerce stores or web apps take 2 to 4 weeks. We give you a clear timeline before we start. No surprises.</p></div>
         </details>
         <details class="faq-item reveal">
           <summary class="faq-q">Do I need to pay a deposit?</summary>
-          <div class="faq-a"><p>Yes — we require 50% upfront to begin work. The remaining 50% is paid on final delivery. This keeps both sides committed and protects your investment.</p></div>
+          <div class="faq-a"><p>Yes, we require 50% upfront to begin work. The remaining 50% is paid on final delivery. This keeps both sides committed and protects your investment.</p></div>
         </details>
         <details class="faq-item reveal">
           <summary class="faq-q">Can I see examples of your past work?</summary>
@@ -586,11 +712,11 @@
         </details>
         <details class="faq-item reveal">
           <summary class="faq-q">What if I don't like the design?</summary>
-          <div class="faq-a"><p>We include 2–3 revision rounds in every project. We work closely with you on the design before moving to development, and keep refining until you're happy.</p></div>
+          <div class="faq-a"><p>We include 2 to 3 revision rounds in every project. We work closely with you on the design before moving to development, and keep refining until you're happy.</p></div>
         </details>
         <details class="faq-item reveal">
           <summary class="faq-q">Do you build for both mobile and desktop?</summary>
-          <div class="faq-a"><p>Always. Every website and app we deliver is fully responsive — looking and working perfectly on phones, tablets, and computers. Mobile-first is our standard.</p></div>
+          <div class="faq-a"><p>Always. Every website and app we deliver is fully responsive, looking and working perfectly on phones, tablets, and computers. Mobile-first is our standard.</p></div>
         </details>
         <details class="faq-item reveal">
           <summary class="faq-q">How do I get started?</summary>
@@ -639,7 +765,7 @@
 
         <div class="contact-form-panel reveal">
           <h3>Send us a message</h3>
-          <p>Fill this in and we'll get back to you fast — usually within the hour.</p>
+          <p>Fill this in and we'll get back to you fast, usually within the hour.</p>
           <form id="contact-form" class="cform" novalidate>
             <div class="cform-row">
               <label class="cform-label" for="cf-name">Your Name</label>
@@ -679,7 +805,7 @@
     <p class="footer-tagline">Trust. Clarity. Results.</p>
     <div class="footer-links">
       <a href="#services">Services</a>
-      <a href="#work">Work</a>
+      <a href="#work">Projects</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -716,6 +842,12 @@
         </div>
       </div>
       <div id="chat-start-form">
+        <div class="chat-quick-replies" aria-label="Quick replies">
+          <button class="qr-chip" data-msg="I need a website">🌐 Website</button>
+          <button class="qr-chip" data-msg="I need an app">📱 App</button>
+          <button class="qr-chip" data-msg="I need graphic design">🎨 Design</button>
+          <button class="qr-chip" data-msg="How much do you charge?">💰 Pricing</button>
+        </div>
         <input type="text" id="chat-name" placeholder="Your name (optional)" maxlength="40" autocomplete="off" />
         <div class="chat-input-row">
           <input type="text" id="chat-first-msg" placeholder="Type your message..." maxlength="500" autocomplete="off" />
@@ -744,7 +876,6 @@
     </button>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>

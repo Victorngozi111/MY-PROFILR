@@ -1,6 +1,3 @@
-// ═══════════════════════════════════════════
-// V Ventures — Live Chat Widget
-// ═══════════════════════════════════════════
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getFirestore, collection, doc, addDoc, setDoc, getDoc, onSnapshot,
          serverTimestamp, query, orderBy, updateDoc, increment }
@@ -18,7 +15,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 
-/* ─── Sound ─── */
 function playSound(type = "receive") {
   try {
     const ctx   = new (window.AudioContext || window.webkitAudioContext)();
@@ -36,16 +32,25 @@ function playSound(type = "receive") {
   } catch (_) {}
 }
 
-/* ─── AI Bot ─── */
 const BOT_RULES = [
   [/\b(hi|hello|hey|good\s*(morning|afternoon|evening))\b/i,
    "Hey! 👋 Welcome to V Ventures Tech Solutions! We build websites, apps & graphics. What can I help you with today?"],
-  [/\b(price|cost|how much|charge|fee|rate|budget|quote|afford)\b/i,
-   "Our pricing is very affordable and depends on your project 💰. A team member will send you a full custom quote — please hold for about 5 minutes!"],
+  [/\b(price|cost|how much|charge|fee|rate|budget|quote|afford|pricing)\b/i,
+   "Our pricing is affordable and depends on your project 💰. Check the Pricing section on this page for our packages. A team member will send your exact quote in ~5 minutes!"],
+  [/\b(deposit|payment|pay|transfer|installment|upfront)\b/i,
+   "We take a 50% deposit to start and the balance on delivery 🤝. Safe and simple. A team member will confirm details in ~5 minutes!"],
+  [/\b(shop|store|e-?commerce|sell|selling|online store)\b/i,
+   "We build e-commerce stores with payment & delivery integration 🛒. Our team will reply with details in ~5 minutes!"],
+  [/\b(where|location|based|address|office|nigeria|delta)\b/i,
+   "We're based in Delta State, Nigeria 🇳🇬 and we work with clients everywhere. Our team will be with you in ~5 minutes!"],
+  [/\b(fix|repair|redesign|rebuild|update my|edit my|existing)\b/i,
+   "Yes, we also upgrade and fix existing websites & apps 🔧. Tell us what needs work. Team reply in ~5 minutes!"],
+  [/\b(maintenance|support|host|hosting|domain)\b/i,
+   "We handle hosting, domains and ongoing maintenance 🛠. Our team will explain the options in ~5 minutes!"],
   [/\b(website|web site|landing page|web design|webpage)\b/i,
-   "We build fast, clean, professional websites 🌐 — from landing pages to full platforms. Our team will get back to you in ~5 minutes!"],
+   "We build fast, clean, professional websites 🌐, from landing pages to full platforms. Our team will get back to you in ~5 minutes!"],
   [/\b(app|mobile|android|ios|flutter|application)\b/i,
-   "We develop amazing apps 📱 — mobile, web apps, dashboards. Our dev team will reply shortly, ~5 minutes!"],
+   "We develop amazing apps 📱: mobile, web apps, dashboards. Our dev team will reply shortly, ~5 minutes!"],
   [/\b(logo|graphic|design|brand|banner|flyer|poster)\b/i,
    "Our design team handles logos, brand identity, graphics & more 🎨. A designer will reach out in ~5 minutes!"],
   [/\b(how long|timeline|deadline|when|fast|quick|urgent|asap)\b/i,
@@ -53,7 +58,7 @@ const BOT_RULES = [
   [/\b(portfolio|example|project|work|sample)\b/i,
    "Check out our Projects section on this page 👀. Our team will be with you in ~5 minutes!"],
   [/\b(whatsapp|call|phone|contact|reach|number)\b/i,
-   "You can also reach us on WhatsApp: +234 913 896 6840 📞. Or stay here — we reply in ~5 minutes!"],
+   "You can also reach us on WhatsApp: +234 913 896 6840 📞. Or stay here. We reply in ~5 minutes!"],
   [/\b(thank|thanks|okay|ok|alright|cool|great|perfect)\b/i,
    "You're welcome! 😊 Our team will be with you shortly. Anything else I can help with?"],
 ];
@@ -84,7 +89,6 @@ async function triggerBot(userText) {
   } catch (_) {}
 }
 
-/* ─── Session ─── */
 let sessionId = localStorage.getItem("vv_session_id");
 if (!sessionId) {
   sessionId = "s_" + Date.now() + "_" + Math.random().toString(36).slice(2, 9);
@@ -100,7 +104,6 @@ let isInitLoad   = true;
 let unreadCount  = 0;
 const seenIds    = new Set();
 
-/* ─── DOM ─── */
 const toggleBtn  = document.getElementById("chat-toggle");
 const chatWindow = document.getElementById("chat-window");
 const closeBtn   = document.getElementById("chat-close");
@@ -122,7 +125,6 @@ const uploadProg = document.getElementById("file-upload-progress");
 const progBar    = document.getElementById("file-progress-bar");
 const progLabel  = document.getElementById("file-progress-label");
 
-/* ─── Init state ─── */
 if (chatEnded) {
   startForm.classList.add("chat-hidden");
   replyArea.classList.add("chat-hidden");
@@ -136,7 +138,6 @@ if (chatEnded) {
   checkBotStatus();
 }
 
-/* ─── Open / close ─── */
 toggleBtn.addEventListener("click", () => {
   isWindowOpen = !isWindowOpen;
   chatWindow.classList.toggle("chat-hidden", !isWindowOpen);
@@ -151,9 +152,15 @@ closeBtn.addEventListener("click", () => {
   isWindowOpen = false; chatWindow.classList.add("chat-hidden");
 });
 
-/* ─── Send first message ─── */
 startBtn.addEventListener("click", sendFirst);
 firstMsgIn.addEventListener("keydown", e => { if (e.key === "Enter") sendFirst(); });
+
+document.querySelectorAll(".qr-chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    firstMsgIn.value = chip.dataset.msg;
+    sendFirst();
+  });
+});
 
 async function sendFirst() {
   const text = firstMsgIn.value.trim();
@@ -171,9 +178,7 @@ async function sendFirst() {
     const ref = await addDoc(collection(db, "chats", sessionId, "messages"), {
       text, sender: "visitor", senderName: name, time: serverTimestamp()
     });
-    // Mark as seen so listener doesn't re-render
     seenIds.add(ref.id);
-    // Show immediately — don't wait for snapshot
     renderMsg({ text, sender: "visitor", senderName: name });
     chatStarted = true;
     localStorage.setItem("vv_chat_started", "true");
@@ -188,11 +193,10 @@ async function sendFirst() {
     console.error(err);
     startBtn.disabled = false; startBtn.textContent = "Send →";
     firstMsgIn.disabled = false; nameIn.disabled = false;
-    appendSystem("⚠ Could not connect — check your internet and Firestore rules.");
+    appendSystem("⚠ Could not connect. Check your internet and Firestore rules.");
   }
 }
 
-/* ─── Send text reply ─── */
 sendBtn.addEventListener("click", sendMsg);
 chatIn.addEventListener("keydown", e => { if (e.key === "Enter") sendMsg(); });
 
@@ -205,9 +209,7 @@ async function sendMsg() {
     const ref = await addDoc(collection(db, "chats", sessionId, "messages"), {
       text, sender: "visitor", time: serverTimestamp()
     });
-    // Mark as seen so listener doesn't duplicate
     seenIds.add(ref.id);
-    // Render immediately
     renderMsg({ text, sender: "visitor" });
     await updateDoc(doc(db, "chats", sessionId), {
       lastMessage: text, lastTime: serverTimestamp(), unreadAdmin: increment(1)
@@ -223,7 +225,6 @@ async function sendMsg() {
   }
 }
 
-/* ─── File / image upload (base64) ─── */
 fileBtn.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0]; if (!file) return; fileInput.value = "";
@@ -284,7 +285,6 @@ function compressImage(file, maxPx, quality) {
   });
 }
 
-/* ─── End chat ─── */
 endBtn.addEventListener("click", () => {
   if (!confirm("End this conversation?")) return;
   doEndChat();
@@ -297,7 +297,7 @@ async function doEndChat() {
   replyArea.classList.add("chat-hidden");
   endBtn.classList.add("chat-hidden");
   endedState.classList.remove("chat-hidden");
-  appendSystem("— Conversation ended —");
+  appendSystem("Conversation ended");
 }
 
 newChatBtn.addEventListener("click", () => {
@@ -315,7 +315,6 @@ newChatBtn.addEventListener("click", () => {
   firstMsgIn.disabled = false; nameIn.disabled = false;
 });
 
-/* ─── Real-time listener (incoming messages from admin) ─── */
 function startListener() {
   if (msgListener) return;
   const q = query(collection(db, "chats", sessionId, "messages"), orderBy("time", "asc"));
@@ -326,7 +325,6 @@ function startListener() {
       if (seenIds.has(id)) return; // already rendered locally
       seenIds.add(id);
       const msg = change.doc.data();
-      // Only render admin messages during initial load (visitor messages shown immediately on send)
       if (isInitLoad || msg.sender === "admin") {
         renderMsg(msg);
       }
@@ -339,7 +337,7 @@ function startListener() {
     isInitLoad = false;
   }, err => {
     console.error("Firestore listener error:", err.message);
-    appendSystem("⚠ Connection issue — messages may not load.");
+    appendSystem("⚠ Connection issue. Messages may not load.");
   });
 }
 
@@ -350,7 +348,6 @@ async function checkBotStatus() {
   } catch (_) {}
 }
 
-/* ─── Render message bubble ─── */
 function renderMsg(msg) {
   const isAdmin = msg.sender === "admin";
   const wrap = document.createElement("div");

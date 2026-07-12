@@ -3,11 +3,8 @@ const hasGSAP = typeof window.gsap !== "undefined" && typeof window.ScrollTrigge
 const root = document.documentElement;
 root.classList.add("anim-ready");
 
-const progressBar = document.getElementById("scroll-progress");
 const topbar = document.getElementById("topbar");
 window.addEventListener("scroll", () => {
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  if (progressBar) progressBar.style.width = (window.scrollY / total) * 100 + "%";
   if (topbar) topbar.classList.toggle("scrolled", window.scrollY > 20);
 }, { passive: true });
 
@@ -36,7 +33,7 @@ const sectionObserver = new IntersectionObserver(entries => {
     navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
   });
 }, { threshold: 0.4 });
-["services", "why", "work", "about", "faq", "contact"].forEach(id => {
+["services", "why", "work", "pricing", "about", "faq", "contact"].forEach(id => {
   const el = document.getElementById(id);
   if (el) sectionObserver.observe(el);
 });
@@ -146,13 +143,6 @@ if (hasGSAP && !reduceMotion) {
     yPercent: -8, ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
   });
-  const mTrack = document.querySelector(".marquee-track");
-  if (mTrack) {
-    gsap.to(mTrack, {
-      x: "-=160", ease: "none",
-      scrollTrigger: { trigger: ".marquee-wrap", start: "top bottom", end: "bottom top", scrub: 1 }
-    });
-  }
 } else {
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -189,78 +179,6 @@ function dismissPreloader() {
 window.addEventListener("load", () => setTimeout(dismissPreloader, 500));
 setTimeout(dismissPreloader, 3000);
 
-function initThree() {
-  const canvas = document.getElementById("bg-canvas");
-  if (!canvas || typeof THREE === "undefined" || reduceMotion) return;
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (e) { return; }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.z = 14;
-
-  const group = new THREE.Group();
-  scene.add(group);
-
-  const crystal = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(4.4, 1),
-    new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true, transparent: true, opacity: 0.32 })
-  );
-  const core = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(2.7, 0),
-    new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.18 })
-  );
-  group.add(crystal, core);
-
-  const count = window.innerWidth < 760 ? 1400 : 3400;
-  const positions = new Float32Array(count * 3);
-  for (let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 64;
-  const pGeo = new THREE.BufferGeometry();
-  pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  const points = new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color: 0x38bdf8, size: 0.07, transparent: true, opacity: 0.7,
-    blending: THREE.AdditiveBlending, depthWrite: false
-  }));
-  scene.add(points);
-
-  let mx = 0, my = 0, scrollY = 0;
-  window.addEventListener("mousemove", e => {
-    mx = e.clientX / window.innerWidth - 0.5;
-    my = e.clientY / window.innerHeight - 0.5;
-  }, { passive: true });
-  window.addEventListener("scroll", () => { scrollY = window.scrollY; }, { passive: true });
-
-  function resize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const clock = new THREE.Clock();
-  function tick() {
-    requestAnimationFrame(tick);
-    if (document.hidden) return;
-    const t = clock.getElapsedTime();
-    group.rotation.y = t * 0.12 + scrollY * 0.0006;
-    group.rotation.x = t * 0.05;
-    group.rotation.z = scrollY * 0.0004;
-    core.rotation.y = -t * 0.22;
-    core.rotation.z = t * 0.1;
-    points.rotation.y = t * 0.02;
-    camera.position.x += (mx * 3.4 - camera.position.x) * 0.04;
-    camera.position.y += (-my * 3.4 - camera.position.y) * 0.04;
-    camera.lookAt(scene.position);
-    renderer.render(scene, camera);
-  }
-  tick();
-}
-initThree();
-
 const loadingEl = document.getElementById("proj-loading");
 const plBar = document.getElementById("pl-bar");
 const plStatus = document.getElementById("pl-status");
@@ -284,7 +202,11 @@ const LOAD_STEPS = [
   ["Done", 100]
 ];
 
-function closeModal() { modalEl && modalEl.classList.remove("open"); }
+function closeModal() {
+  if (!modalEl) return;
+  modalEl.classList.remove("open");
+  setTimeout(() => { if (!modalEl.classList.contains("open")) pmScreen.innerHTML = ""; }, 350);
+}
 pmClose && pmClose.addEventListener("click", closeModal);
 pmCloseBtn && pmCloseBtn.addEventListener("click", closeModal);
 pmBackdrop && pmBackdrop.addEventListener("click", closeModal);
@@ -314,7 +236,22 @@ function openProjectModal(card) {
       pmProjDesc.textContent = desc;
       pmScreen.style.background = screenBg;
 
-      if (isLive && url) {
+      if (isLive && url && !url.includes("wa.me")) {
+        pmScreen.innerHTML = "";
+        const frame = document.createElement("iframe");
+        frame.className = "pm-iframe";
+        frame.src = url;
+        frame.title = title + " live preview";
+        const sw = pmScreen.clientWidth || 760;
+        const sh = pmScreen.clientHeight || 330;
+        const scale = sw / 1280;
+        frame.style.width = "1280px";
+        frame.style.height = Math.ceil(sh / scale) + "px";
+        frame.style.transform = "scale(" + scale + ")";
+        pmScreen.appendChild(frame);
+        pmVisitBtn.style.display = "";
+        pmVisitBtn.href = url;
+      } else if (isLive && url) {
         pmScreen.innerHTML = `<div style="text-align:center;padding:20px;">
           <div style="font-family:'Sora',sans-serif;font-size:3rem;font-weight:800;color:rgba(255,255,255,0.16);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:18px;">${title.split(" ").slice(0, 2).join(" ")}</div>
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.16);border:1px solid rgba(34,197,94,0.4);padding:6px 16px;border-radius:999px;font-size:0.8rem;font-weight:700;color:#4ade80;">

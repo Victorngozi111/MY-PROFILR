@@ -1,14 +1,9 @@
-// ═══════════════════════════════════════════
-// V Ventures — Admin Chat Panel
-// Change ADMIN_PASSWORD below to your own.
-// ═══════════════════════════════════════════
 import { initializeApp }   from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getFirestore, collection, doc, addDoc, setDoc, getDocs, deleteDoc,
          onSnapshot, query, orderBy, updateDoc, serverTimestamp, writeBatch }
   from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
-// No Firebase Storage — images stored as base64 in Firestore
 
-const ADMIN_PASSWORD = "vventures2026"; // ← CHANGE THIS
+const ADMIN_PASSWORD = "vventures2026";
 
 const firebaseConfig = {
   apiKey:            "AIzaSyCpTNt4-ZigWGX1XFfr719jSxhBt1vVUK0",
@@ -22,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 
-/* ─── Sound ─── */
 function playSound() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -39,14 +33,12 @@ function playSound() {
   } catch (_) {}
 }
 
-/* ─── Browser notification ─── */
 function browserNotify(title, body) {
   if (Notification.permission !== "granted") return;
   const n = new Notification(title, { body, icon: "my logo.png", tag: "vv-chat" });
   n.onclick = () => { window.focus(); n.close(); };
 }
 
-/* ─── DOM ─── */
 const loginScreen  = document.getElementById("login-screen");
 const adminApp     = document.getElementById("admin-app");
 const passInput    = document.getElementById("admin-pass");
@@ -86,7 +78,6 @@ let sessionsUnsub      = null;
 let isFirstAdminReply  = true;
 const isMobile         = () => window.innerWidth <= 640;
 
-/* ─── Auth ─── */
 const isAuthed = () => sessionStorage.getItem("vv_admin_auth") === "ok";
 if (isAuthed()) showApp();
 
@@ -131,7 +122,6 @@ function showApp() {
   startLeadsListener();
 }
 
-/* ─── Back (mobile) ─── */
 backBtn.addEventListener("click", () => {
   convPanel.classList.add("hidden");
   emptyState.classList.remove("hidden");
@@ -140,7 +130,6 @@ backBtn.addEventListener("click", () => {
   document.querySelectorAll(".chat-item").forEach(el => el.classList.remove("active"));
 });
 
-/* ─── Sessions listener ─── */
 let sessionsInitLoad = true;
 function startSessionsListener() {
   const q = query(collection(db, "chats"), orderBy("lastTime", "desc"));
@@ -149,7 +138,7 @@ function startSessionsListener() {
       if (change.type === "added" && !sessionsInitLoad) {
         const s = change.doc.data();
         playSound();
-        browserNotify("💬 New chat — V Ventures", `${s.name || "Visitor"}: ${s.lastMessage || ""}`);
+        browserNotify("💬 New chat | V Ventures", `${s.name || "Visitor"}: ${s.lastMessage || ""}`);
       }
     });
     sessionsInitLoad = false;
@@ -189,7 +178,6 @@ function renderChatList(sessions) {
   });
 }
 
-/* ─── Open conversation ─── */
 function openConversation(session) {
   currentSessionId     = session.id;
   isFirstAdminReply    = !session.hasAdminReplied;
@@ -229,7 +217,6 @@ function openConversation(session) {
   adminInput.focus();
 }
 
-/* ─── Send reply ─── */
 adminSend.addEventListener("click", sendAdminReply);
 adminInput.addEventListener("keydown", e => { if (e.key === "Enter") sendAdminReply(); });
 
@@ -247,14 +234,12 @@ async function sendAdminReply() {
   } catch (err) { console.error(err); }
 }
 
-/* ─── Delete single message ─── */
 async function deleteMessage(sessionId, msgId) {
   if (!confirm("Delete this message?")) return;
   try { await deleteDoc(doc(db, "chats", sessionId, "messages", msgId)); }
   catch (err) { console.error(err); }
 }
 
-/* ─── Delete entire chat ─── */
 delChatBtn.addEventListener("click", async () => {
   if (!currentSessionId) return;
   if (!confirm("Delete this entire conversation? This cannot be undone.")) return;
@@ -270,7 +255,6 @@ delChatBtn.addEventListener("click", async () => {
   } catch (err) { console.error(err); alert("Delete failed: " + err.message); }
 });
 
-/* ─── Append message bubble ─── */
 function appendMsg(sessionId, msgId, msg) {
   const isAdmin = msg.sender === "admin";
   const wrap    = document.createElement("div");
@@ -301,7 +285,6 @@ function appendMsg(sessionId, msgId, msg) {
   convMessages.scrollTop = convMessages.scrollHeight;
 }
 
-/* ─── Helpers ─── */
 function formatTime(d) {
   if (!d) return "";
   const diff = Date.now() - d;
@@ -315,7 +298,6 @@ function escHtml(s) {
   return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
-/* ─── Tab switching ─── */
 let activeTab = "chats";
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -330,7 +312,6 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
   });
 });
 
-/* ─── Leads ─── */
 let currentLeadId   = null;
 let leadsUnsub      = null;
 let leadsInitLoad   = true;
@@ -342,7 +323,7 @@ function startLeadsListener() {
       if (change.type === "added" && !leadsInitLoad) {
         const d = change.doc.data();
         playSound();
-        browserNotify("📋 New Lead — V Ventures", `${d.name || "Someone"} needs ${d.service || "help"}`);
+        browserNotify("📋 New Lead | V Ventures", `${d.name || "Someone"} needs ${d.service || "help"}`);
       }
     });
     leadsInitLoad = false;
